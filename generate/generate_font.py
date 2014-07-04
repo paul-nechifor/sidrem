@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import os
 from svg_path_tools import Path
 
 SVG_TEMPLATE = """<?xml version="1.0" standalone="no"?>
@@ -29,8 +30,8 @@ def fixPath(pathStr, height=850, widthMultiplier=9.2):
     # Turning upside down.
     p.scale(1, -1)
     p.translate(0, height)
-    
-    genPath = p.toString("%d")
+
+    genPath = p.toString('%d')
 
     return genPath, (maxX - minX) * widthMultiplier
 
@@ -47,15 +48,16 @@ def generateGlyphs(paths):
     return '\n'.join(glyphs)
 
 def main():
-    paths = json.loads(open("input/paths.json").read())
+    dir = os.path.dirname(os.path.realpath(__file__))
+    paths = json.loads(open(dir + '/input/paths.json').read())
     glyphs = generateGlyphs(paths)
     svg = SVG_TEMPLATE % {
-        'metadata': "Created by paul.nechifor.net",
+        'metadata': 'Created by Paul Nechifor (http://nechifor.net/)',
         'fontId': 'sidrem',
         'glyphs': glyphs
     }
-    
-    f = open('output/font.svg', 'w')
+
+    f = open(dir + '/../static/sidrem.svg', 'w')
     f.write(svg.encode('utf-8'))
     f.close()
 
