@@ -1,13 +1,13 @@
 # Sidrem
 
-This is a Python script which turns my [constructed script][1] from SVG shapes
-to an SVG font.
+This is a Python script which turns my [constructed script][conscript] from SVG
+shapes to an SVG font. [Try it][tryit] on my web site.
 
 ![sidrem screenshot](screenshot.png)
 
 ## Install
 
-Install packages:
+Install the dependencies:
 
     npm install
 
@@ -15,18 +15,19 @@ Remake the font:
 
     ./generate/generate_font.py
 
-Build the site:
+Build it with `intercessor` in `./build`:
 
-    npm run-script build
+    npm run build
 
-Run it:
+Start it:
 
-    node build/app.js
+    npm run start
 
-Go to [localhost:3000](http://localhost:3000).
+See it at [localhost:3000](http://localhost:3000).
 
 ## License
 
 MIT
 
-[1]: http://en.wikipedia.org/wiki/Constructed_script
+[conscript]: http://en.wikipedia.org/wiki/Constructed_script
+[tryit]: http://nechifor.net/sidrem
