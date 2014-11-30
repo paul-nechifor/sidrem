@@ -5,25 +5,14 @@ shapes to an SVG font. [Try it][tryit] on my web site.
 
 ![sidrem screenshot](screenshot.png)
 
-## Install
+## Usage
 
-Install the dependencies:
+Clone this repo. Build and run it by typing:
 
-    npm install
+    npm run up
 
-Remake the font:
-
-    ./generate/generate_font.py
-
-Build it with `intercessor` in `./build`:
-
-    npm run build
-
-Start it:
-
-    npm run start
-
-See it at [localhost:3000](http://localhost:3000).
+Go to [localhost:3000](http://localhost:3000) to see it. See other [supported
+commands][sc].
 
 ## License
 
@@ -31,3 +20,4 @@ MIT
 
 [conscript]: http://en.wikipedia.org/wiki/Constructed_script
 [tryit]: http://nechifor.net/sidrem
+[sc]: https://github.com/paul-nechifor/intercessor#supported-commands

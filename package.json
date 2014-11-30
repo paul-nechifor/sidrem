@@ -4,7 +4,9 @@
   "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
   "scripts": {
     "build": "intercessor",
-    "start": "node build/app.js"
+    "intercessor-make": "mkdir static 2>/dev/null; ./generate/generate_font.py",
+    "start": "node build/app.js",
+    "up": "npm install && npm run intercessor-make && npm run build && npm run start"
   },
   "dependencies": {
     "intercessor": ">=0.3.2"
