@@ -4,12 +4,14 @@
   "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
   "scripts": {
     "build": "intercessor",
-    "intercessor-make": "mkdir static 2>/dev/null; ./generate/generate_font.py",
+    "intercessor-make": "mkdir static 2>/dev/null; ./generate/generate_font.py && cd static && svg2ttf sidrem.svg sidrem.ttf && ttf2woff sidrem.ttf sidrem.woff",
     "start": "node build/app.js",
     "up": "npm install && npm run intercessor-make && npm run build && npm run start"
   },
   "dependencies": {
-    "intercessor": ">=0.3.2"
+    "intercessor": ">=0.3.2",
+    "svg2ttf": "^1.2.0",
+    "ttf2woff": "^1.3.0"
   },
   "repository": {
     "type": "git",
