@@ -1,0 +1,80 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    style: :stylus(compress=true)
+      @font-face
+        font-family 'sidrem'
+        src url(../sidrem.svg#sidrem) format('svg'),
+            url(../sidrem.woff) format('woff'),
+            url(../sidrem.ttf) format('truetype')
+        font-weight normal
+        font-style normal
+      body
+        font-size 1.2em
+        line-height 1.4
+      .header, .footer, .blocks
+        margin 0 auto
+        max-width 600px
+      a
+        text-decoration none
+        &:hover
+          text-decoration underline
+      .blocks
+        max-width 1000px
+      #sidrem-block, #english-block
+        box-sizing border-box
+        font-size 1.4em
+        width 50%
+      #sidrem-block
+        float left
+        font-family 'sidrem'
+        padding-right 0.5em
+        text-transform lowercase
+        word-spacing 23px
+      #english-block
+        float right
+        letter-spacing 1px
+        padding-left 0.5em
+        text-transform uppercase
+        word-spacing 4px
+      .footer
+        clear both
+        padding-top 1em
+
+  body
+    .header: :markdown-it
+      # [Sidrem](.)
+
+      This is a [constructed script][conscript] I designed from doodling in
+      classes. I later scanned and converted it to an SVG font using a Python
+      script available in the [Sidrem repo][sidrem]. The rule for constructing
+      the font it that every letter must be a single continous non-intersecting
+      line.
+
+      The text below is editable, so you can **select and change it**.
+
+      [conscript]: http://en.wikipedia.org/wiki/Constructed_script
+      [sidrem]: https://github.com/paul-nechifor/sidrem
+
+    // googleoff: all
+    .blocks
+      #sidrem-block(contenteditable): :markdown-it
+        Alice was beginning to get very tired of sitting by her sister on the
+        bank and of having nothing to do once or twice she had peeped into the
+        book her sister was reading but it had no pictures or conversations in
+        it and what is the use of a book thought Alice without pictures or
+        conversation
+      #english-block(contenteditable): :markdown-it
+        Alice was beginning to get very tired of sitting by her sister on the
+        bank and of having nothing to do once or twice she had peeped into the
+        book her sister was reading but it had no pictures or conversations in
+        it and what is the use of a book thought Alice without pictures or
+        conversation
+    // googleon: all
+
+    .footer: :markdown-it
+      Created by [Paul Nechifor](/).
+
+    script !{js}

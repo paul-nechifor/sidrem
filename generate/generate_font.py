@@ -60,7 +60,7 @@ def main():
         'glyphs': glyphs
     }
 
-    f = open(dir + '/../static/sidrem.svg', 'w')
+    f = open(dir + '/../dist/sidrem.svg', 'w')
     f.write(svg.encode('utf-8'))
     f.close()
 

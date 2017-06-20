@@ -7,17 +7,13 @@ shapes to an SVG font. [Try it][tryit] on my web site.
 
 ## Usage
 
-Clone this repo. Build and run it by typing:
+Start the server and watch for changes:
 
-    npm run up
-
-Go to [localhost:3000](http://localhost:3000) to see it. See other [supported
-commands][sc].
+    npm start
 
 ## License
 
-MIT
+ISC
 
 [conscript]: http://en.wikipedia.org/wiki/Constructed_script
 [tryit]: http://nechifor.net/sidrem
-[sc]: https://github.com/paul-nechifor/intercessor#supported-commands
