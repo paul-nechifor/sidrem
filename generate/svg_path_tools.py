@@ -3,11 +3,14 @@
 import re
 import math
 
+
 class SPathList:
+
     def __init__(self, paths=None):
         self.paths = []
-        if paths != None:
+        if paths is not None:
             self.paths.extend(paths)
+
     def findNeighs(self, ignoreDist=600, maxDist=7.0, minPoints=3):
         for p in self.paths:
             p.path.setPoints()
@@ -31,7 +34,7 @@ class SPathList:
                     print ap.id, bp.id
                     ap.neighs.append(bp)
                     bp.neighs.append(ap)
-                    
+
     def calcDists(self, a, b):
         ap = a.points
         bp = b.points
@@ -39,7 +42,7 @@ class SPathList:
         for i in xrange(0, len(ap), 2):
             for j in xrange(0, len(bp), 2):
                 dx = ap[i] - bp[j]
-                dy = ap[i + 1] - bp[j + 1] 
+                dy = ap[i + 1] - bp[j + 1]
                 dists.append(math.sqrt(dx*dx + dy*dy))
         dists.sort()
         return dists
@@ -61,7 +64,7 @@ class SPathList:
                 for i in xrange(0, len(e.nums), 2):
                     e.nums[i] += trX
                     e.nums[i + 1] += trY
-         
+
     def writeSvg(self, out, w, h):
         f = open(out, 'w')
         f.write("""<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -77,9 +80,10 @@ class SPathList:
         for sPath in self.paths:
             sPath.path
             d = sPath.path.toString('%d')
-            f.write('<path style="fill:#DDD;stroke:#333;stroke-width:40px" id="%s" d="%s"/>\n' % (sPath.id, d))
+            f.write('<path style="fill:#DDD;stroke:#333;stroke-width:40px" id="%s" d="%s"/>\n' % (sPath.id, d))  # NOQA
         f.write("</g></svg>\n")
         f.close()
+
 
 class SPath:
     def __init__(self):
@@ -90,7 +94,9 @@ class SPath:
         self.county = None
         self.neighs = []
 
+
 class Path:
+
     ABSOLUTE = 'MLHVCSQTAZ'
     RELATIVE = 'mlhvcsqtaz'
     ABSOLUTE_SET = set(ABSOLUTE)
@@ -98,10 +104,11 @@ class Path:
     TYPES = ABSOLUTE + RELATIVE
     TYPES_REGEX = '([' + TYPES + '])'
     TYPES_SET = set(TYPES)
+
     def __init__(self, pathString=None):
         self.elems = []
         self.points = None
-        if pathString != None:
+        if pathString is not None:
             self.addFromSvgString(pathString)
 
     def addFromSvgString(self, pathString):
@@ -115,7 +122,7 @@ class Path:
 
         for i in v:
             if i in Path.TYPES_SET:
-                if type != None:
+                if type is not None:
                     p = PathElem(type, nums)
                     self.elems.append(p)
                 type = i
@@ -123,7 +130,7 @@ class Path:
             else:
                 nums.append(float(i))
 
-        if type != None:
+        if type is not None:
             p = PathElem(type, nums)
             self.elems.append(p)
 
@@ -160,7 +167,7 @@ class Path:
             for i in xrange(0, len(e.nums), 2):
                 e.nums[i] += trX
                 e.nums[i + 1] += trY
-                
+
     def scale(self, sx, sy=None):
         if sy is None:
             sy = sx
@@ -184,8 +191,8 @@ class Path:
                     for j in xrange(0, nr, 2):
                         nums.append(x + e.nums[i + j + 0])
                         nums.append(y + e.nums[i + j + 1])
-                    x += e.nums[i + nr - 2] 
-                    y += e.nums[i + nr - 1] 
+                    x += e.nums[i + nr - 2]
+                    y += e.nums[i + nr - 1]
 
                 p = PathElem(t.upper(), nums)
             elif t in Path.ABSOLUTE_SET:
@@ -214,7 +221,8 @@ class Path:
             ret.append(x + v[i])
             ret.append(y + v[i+1])
         return ret
-    
+
+
 class PathElem:
     MULTIPL = {
         'm': 2,
@@ -234,7 +242,7 @@ class PathElem:
         self.nums = nums
 
         multipl = PathElem.MULTIPL[type.lower()]
-        if multipl == None:
+        if multipl is None:
             if len(nums) != 0:
                 raise TypeError()
         else:
@@ -245,10 +253,12 @@ class PathElem:
         return '(%s %s)' % (self.type, ' '.join([str(x) for x in self.nums]))
     __repr__ = __str__
 
+
 def test():
     p = Path('  m 4 5.5l  5,   10   L2e-3,999  z  ')
     print p.elems
     print p.toString('%d')
+
 
 if __name__ == '__main__':
     test()

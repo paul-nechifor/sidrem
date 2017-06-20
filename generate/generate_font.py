@@ -16,9 +16,10 @@ SVG_TEMPLATE = """<?xml version="1.0" standalone="no"?>
 %(glyphs)s
 </font>
 </defs>
-</svg>"""
-GLYPH_TEMPLATE = """<glyph unicode="%(unicode)s" d="%(d)s" horiz-adv-x="%(adv)d" />"""
+</svg>"""  # NOQA
+GLYPH_TEMPLATE = """<glyph unicode="%(unicode)s" d="%(d)s" horiz-adv-x="%(adv)d" />"""  # NOQA
 ALPHABET = u"aăâbcdefghiîjklmnopqrsștțuvwxyz"
+
 
 def fixPath(pathStr, height=850, widthMultiplier=9.2):
     p = Path(pathStr).toJoined()
@@ -35,6 +36,7 @@ def fixPath(pathStr, height=850, widthMultiplier=9.2):
 
     return genPath, (maxX - minX) * widthMultiplier
 
+
 def generateGlyphs(paths):
     glyphs = []
     for i, path in enumerate(paths):
@@ -46,6 +48,7 @@ def generateGlyphs(paths):
         }
         glyphs.append(glyph)
     return '\n'.join(glyphs)
+
 
 def main():
     dir = os.path.dirname(os.path.realpath(__file__))
@@ -60,5 +63,6 @@ def main():
     f = open(dir + '/../static/sidrem.svg', 'w')
     f.write(svg.encode('utf-8'))
     f.close()
+
 
 main()
