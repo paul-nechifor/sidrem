@@ -1,6 +1,6 @@
 {
   "name": "sidrem",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Generate seamless circuit board tiles. ",
   "devDependencies": {
     "babel-core": "^6.25.0",
