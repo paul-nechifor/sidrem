@@ -1,8 +1,12 @@
 doctype html
 html(lang='en')
   head
-    title= title
     meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    title Sidrem
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Sidrem is a constructed script where every letter is a non-intersecting line.')
+    link(rel='apple-touch-icon', href='/favicon152.png')
     style: :stylus(compress=true)
       @font-face
         font-family 'sidrem'
@@ -42,6 +46,14 @@ html(lang='en')
       .footer
         clear both
         padding-top 1em
+      @media (max-width: 600px)
+        #sidrem-block, #english-block
+          font-size 1.2em
+        #sidrem-block
+          word-spacing 5px
+        #english-block
+          letter-spacing 0
+          word-spacing 0
 
   body
     .header: :markdown-it
