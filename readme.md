@@ -1,3 +1,7 @@
+# This repository has been moved to [gitlab.com/paul-nechifor/sidrem](http://gitlab.com/paul-nechifor/sidrem).
+
+Old readme:
+
 # Sidrem
 
 This is a Python script which turns my [constructed script][conscript] from SVG
